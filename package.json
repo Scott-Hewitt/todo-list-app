@@ -1,0 +1,29 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "A simple to-do list app built with Electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.example.todoapp",
+    "productName": "TodoApp",
+    "files": [
+      "**/*",
+      "!node_modules/.idea",
+      "!dist"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "electron-builder": "^25.1.8",
+    "electron": "^33.3.1"
+  }
+}

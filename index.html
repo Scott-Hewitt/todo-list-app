@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #24273A; /* Background */
+            color: #CAD3F5; /* Text color */
+        }
+
+        .todo-container {
+            background: #1E1E2E;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid #363A4F;
+        }
+
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .input-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #todo-input {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #363A4F;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #363A4F;
+            color: #CAD3F5;
+            caret-color: #F5BDE6;
+        }
+
+        #priority-select {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #363A4F;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #1E1E2E;
+            color: #CAD3F5;
+            appearance: none;
+            cursor: pointer;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTUgNEwxIDBsLTUgNEwxIDEuMiIgZmlsbD0iI0NBRDNGNSIvPjwvc3ZnPg==');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px;
+        }
+
+        #priority-select option {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #1E1E2E;
+            color: #CAD3F5;
+        }
+
+        .todo-item {
+            padding: 20px;
+            background: #363A4F;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            cursor: grab;
+            transform: rotate(calc(var(--rotation, 0) * 1deg));
+            width: 150px;
+            min-height: 150px;
+            max-width: 250px;
+            word-wrap: break-word;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #CAD3F5;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .todo-item:hover {
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+            transform: scale(1.02) rotate(calc(var(--rotation, 0) * 1deg));
+        }
+
+        .delete-btn {
+            background: #ED8796;
+            color: #1E2030;
+            border: none;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 14px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .delete-btn:hover {
+            background: #F5BDE6;
+        }
+    </style>
+</head>
+<body>
+<div class="todo-container">
+    <ul id="todo-list" class="todo-list"></ul>
+    <div class="input-container">
+        <input type="text" id="todo-input" placeholder="Add a new task..." />
+        <select id="priority-select">
+            <option value="low" selected>Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+</div>
+<script src="todo.js"></script>
+</body>
+</html>
